@@ -50,12 +50,13 @@ Engine.update(engine);
   groundSprite.x= ground.position.x 
   packageSprite.y= packageBody.position.y 
   groundSprite.y= ground.position.y 
-
+packageBody.position.x=helicopterSprite.x;
   drawSprites();
  keyPressed();
  box3.display();
  box2.display();
  box1.display();
+ helicopterMove();
 }
 
 function keyPressed() {
@@ -66,5 +67,14 @@ function keyPressed() {
   }
 }
 
-
+function helicopterMove(){
+	if(keyCode === LEFT_ARROW && packageBody.position.y<400){
+		helicopterSprite.x--;
+		packageBody.position.x=helicopterSprite.x;
+	}
+	if(keyCode === RIGHT_ARROW && packageBody.position.y<400){
+		helicopterSprite.x++;
+		packageBody.position.x=helicopterSprite.x;
+	}
+}
 
