@@ -57,24 +57,28 @@ packageBody.position.x=helicopterSprite.x;
  box2.display();
  box1.display();
  helicopterMove();
+
+
+
 }
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
     // Look at the hints in the document and understand how to make the package body fall only on press of the Down arrow key.
     Body.setStatic(packageBody,false);
-
+ 
   }
 }
 
 function helicopterMove(){
-	if(keyCode === LEFT_ARROW && packageBody.position.y<400){
+	var pos=helicopterSprite.x;
+	if(keyCode===LEFT_ARROW && packageBody.position.y<400){
 		helicopterSprite.x--;
-		packageBody.position.x=helicopterSprite.x;
 	}
 	if(keyCode === RIGHT_ARROW && packageBody.position.y<400){
 		helicopterSprite.x++;
-		packageBody.position.x=helicopterSprite.x;
 	}
+	translate(helicopterSprite.x,0);
+	packageBody.x=0;
+	
 }
-
