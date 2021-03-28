@@ -50,13 +50,12 @@ Engine.update(engine);
   groundSprite.x= ground.position.x 
   packageSprite.y= packageBody.position.y 
   groundSprite.y= ground.position.y 
-packageBody.position.x=helicopterSprite.x;
   drawSprites();
- keyPressed();
+//  keyPressed();
  box3.display();
  box2.display();
  box1.display();
- helicopterMove();
+
 
 
 
@@ -66,19 +65,15 @@ function keyPressed() {
  if (keyCode === DOWN_ARROW) {
     // Look at the hints in the document and understand how to make the package body fall only on press of the Down arrow key.
     Body.setStatic(packageBody,false);
- 
   }
+  if(keyCode===LEFT_ARROW && packageBody.position.y<400){
+	helicopterSprite.x=helicopterSprite.x-10;
+	Body.translate(packageBody,{x:-10,y:0});
+}
+if(keyCode === RIGHT_ARROW && packageBody.position.y<400){
+	helicopterSprite.x=helicopterSprite.x+10;
+	Body.translate(packageBody,{x:10,y:0});
 }
 
-function helicopterMove(){
-	var pos=helicopterSprite.x;
-	if(keyCode===LEFT_ARROW && packageBody.position.y<400){
-		helicopterSprite.x--;
-	}
-	if(keyCode === RIGHT_ARROW && packageBody.position.y<400){
-		helicopterSprite.x++;
-	}
-	translate(helicopterSprite.x,0);
-	packageBody.x=0;
-	
+  
 }
